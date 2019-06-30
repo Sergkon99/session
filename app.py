@@ -16,21 +16,21 @@ def check_logged_in(func):
 
 @app.route('/')
 def index():
-    return 'Index page'
+    return 'Index page.'
 
 
 @app.route('/login/<user>')
 def login(user: str) -> str:
     session['is_logged'] = True
     session['user_name'] = user
-    return 'Hi, {0}. You are successful logged in'.format(session['user_name'])
+    return 'Hi, {0}. You are successful logged in.'.format(session['user_name'])
 
 
 @app.route('/logout')
 def logout():
     session.pop('is_logged')
-    tmp = session.pop('user_name')
-    return 'Bye, {0}. You are successful logged out'.format(tmp)
+    return 'Bye, {0}. You are successful logged out.'.format(
+            session.pop('user_name'))
 
 
 @app.route('/profile')
