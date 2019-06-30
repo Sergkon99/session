@@ -28,6 +28,8 @@ def login(user: str) -> str:
 
 @app.route('/logout')
 def logout():
+    if 'is_logged' not in session:
+        return 'Nobody are logged in now'
     session.pop('is_logged')
     return 'Bye, {0}. You are successful logged out.'.format(
             session.pop('user_name'))
