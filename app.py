@@ -1,5 +1,6 @@
 from flask import Flask, session
 from functools import wraps
+import requests
 
 app = Flask(__name__)
 app.secret_key = 'qwerty1234'
@@ -12,6 +13,12 @@ def check_logged_in(func):
             return func(*args, **kwargs)
         return 'You are NOT logged in.'
     return wrapper
+
+
+@app.route('/get')
+def get():
+    r = requests.get('https://medinfo-yar.ru/index.php/')
+    return str(r.text)
 
 
 @app.route('/')
