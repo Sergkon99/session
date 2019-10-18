@@ -15,12 +15,6 @@ def check_logged_in(func):
     return wrapper
 
 
-@app.route('/get')
-def get():
-    r = requests.get('https://medinfo-yar.ru/index.php/')
-    return str(r.text)
-
-
 @app.route('/')
 def index():
     return 'Index page.'
